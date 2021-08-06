@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class RythmGenerator : MonoBehaviour
 {
-
     public string[] time_signatures = new string[] {"3/4","4/4"};
     public double tempo = 60.0;
     
@@ -16,7 +15,6 @@ public class RythmGenerator : MonoBehaviour
     void Start()
     {
         
-
     }
 
     // Update is called once per frame

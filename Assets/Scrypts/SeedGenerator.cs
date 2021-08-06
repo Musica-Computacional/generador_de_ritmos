@@ -10,6 +10,7 @@ public class SeedGenerator : MonoBehaviour
     public bool random_seed = false;
     public int seed = 1234;
     public GameObject TextInput;
+
     /*public void GenerateSeed()
     {
         if (use_string_seed)
