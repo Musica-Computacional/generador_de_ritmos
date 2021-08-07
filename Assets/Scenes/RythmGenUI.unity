@@ -2550,6 +2550,7 @@ MonoBehaviour:
   time_signature: 4/4
   sub_division: 1/8
   tempo: 60
+  remove_beats_randomly: 1
   text_ran_gen_num: {fileID: 0}
   num: 0
 --- !u!114 &1504608337
