@@ -11,22 +11,6 @@ public class SeedGenerator : MonoBehaviour
     public int seed = 1234;
     public GameObject TextInput;
 
-    /*public void GenerateSeed()
-    {
-        if (use_string_seed)
-        {
-            seed = string_seed.GetHashCode();
-        }
-
-        if (random_seed)
-        {
-            seed = Random.Range(1, 99999);
-        }
-
-        Random.InitState(seed);
-        // return seed;
-    }*/
-
 
     void Awake()
     {
@@ -48,14 +32,8 @@ public class SeedGenerator : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("yeah");
+        Debug.Log("yeah: 673381950");
         Debug.Log(seed);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 }

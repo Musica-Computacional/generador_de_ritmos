@@ -2547,11 +2547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8fc2c0e118ef6448196982b4019bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time_signatures:
-  - 3/4
-  - 4/4
+  time_signature: 4/4
+  sub_division: 1/8
   tempo: 60
-  text_ran_gen_num: {fileID: 866103406}
+  text_ran_gen_num: {fileID: 0}
   num: 0
 --- !u!114 &1504608337
 MonoBehaviour:
@@ -2565,7 +2564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3697931126a4db947b9c78714fc1d1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  string_seed: seedseed
+  string_seed: seed
   use_string_seed: 1
   random_seed: 0
   seed: 1234
