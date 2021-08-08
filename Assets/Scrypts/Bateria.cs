@@ -6,9 +6,9 @@ using UnityEngine;
 public class Bateria : MonoBehaviour
 {
 
-    public List<AudioClip> clave_beats;
-    public List<AudioClip> filler_beats;
-    public List<AudioClip> metric_beats;
+    public List<AudioClip> clave_beats;  // kick
+    public List<AudioClip> filler_beats; // menos presente, sin saturacion //hithat cerrado
+    public List<AudioClip> metric_beats; // snare,hithat
 
 
     private static List<string> rythm = new List<string>();
@@ -28,15 +28,28 @@ public class Bateria : MonoBehaviour
 
     public static void getRythm(string time_signature, string sub_division)
     {
-        string r = RythmGenerator.Calculations(time_signature,sub_division);
-        // clave,clave_pattern,filler_pathern
-        rythm = r.Split('_').ToList();
+        List<List<int>> rythm = RythmGenerator.Calculations(time_signature,sub_division);
+        // metric,clave,clave_pattern,filler_pathern
+        
         AssignSamples(rythm);
     }
 
-    static void AssignSamples(List<string> rythm)
+    private static List<List<AudioClip>> AssignSamples(List<List<int>> rythm)
     {
-        List<string> result = new List<string>();
+        List<int> metric = rythm[0];
+        List<int> clave  = rythm[0];
+        List<int> filler = rythm[0];
+
+
+        List<AudioClip> metric_ = new List<AudioClip>();
+        List<AudioClip> clave_ = new List<AudioClip>();
+        List<AudioClip> filler_ = new List<AudioClip>();
+
+
+        List<List<AudioClip>> result = new List<List<AudioClip>>();
+        result.Add(metric_);
+        result.Add(clave_);
+        result.Add(filler_);
         return result;
     }
 }

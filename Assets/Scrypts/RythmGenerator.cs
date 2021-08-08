@@ -24,8 +24,8 @@ public class RythmGenerator : MonoBehaviour
         Debug.Log("metric_pattern: " + string.Join(",", metric_clave_filler[0]));
         Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
         Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
-        string result = string.Join("", actual_clave) 
-            + "_" + string.Join("", metric_clave_filler[0]) 
+        string result = string.Join("", metric_clave_filler[0]) 
+            + "_" + string.Join("", actual_clave)
             + "_" + string.Join("", metric_clave_filler[1])
             + "_" + string.Join("", metric_clave_filler[2]);
         Debug.Log(result);*/
@@ -45,7 +45,7 @@ public class RythmGenerator : MonoBehaviour
         // return seed;
     }
 
-    public static string Calculations(string time_signature, string sub_division)
+    public static List<List<int>> Calculations(string time_signature, string sub_division)
     {
         //DebugMethod();
         List<string> actual_clave = ClaveGenerator(time_signature, sub_division);
@@ -55,10 +55,10 @@ public class RythmGenerator : MonoBehaviour
         Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
         Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
 
-        string result = string.Join("", actual_clave) 
-            + "_" + string.Join("", metric_clave_filler[0]) 
-            + "_" + string.Join("", metric_clave_filler[1])
-            + "_" + string.Join("", metric_clave_filler[2]);
+        List<List<int>> result = new List<List<int>>();
+        result.Add(metric_clave_filler[0]);
+        result.Add(metric_clave_filler[1]);
+        result.Add(metric_clave_filler[2]);
 
         return result;
     }
