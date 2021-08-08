@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class RythmGenerator : MonoBehaviour
 {
 
-    public string time_signature; // { "3/4", "4/4" };
-    public string sub_division; // { "1/8", "1/16" };
-    public double tempo = 60.0;
-    public bool remove_beats_randomly = false;
-
+    //public string time_signature; // { "3/4", "4/4" };
+    //public string sub_division; // { "1/8", "1/16" };
+    //public double tempo = 60.0;
+    public static bool remove_beats_randomly = false;
     public GameObject text_ran_gen_num;
     public int num;
 
@@ -19,11 +18,17 @@ public class RythmGenerator : MonoBehaviour
     void Start()
     {
         //DebugMethod();
-        List<string> actual_clave = ClaveGenerator(time_signature,sub_division);
+        /*List<string> actual_clave = ClaveGenerator(time_signature,sub_division);
         Debug.Log("actual_clave: " + string.Join(",", actual_clave));
-        List<List<int>> fill_clave = FillerGenerator(actual_clave, sub_division);
-        Debug.Log("clave_pattern_o: " + string.Join(",", fill_clave[0]));
-        Debug.Log("fill_pattern: " + string.Join(",", fill_clave[1]));
+        List<List<int>> metric_clave_filler = FillerGenerator(actual_clave, sub_division);
+        Debug.Log("metric_pattern: " + string.Join(",", metric_clave_filler[0]));
+        Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
+        Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
+        string result = string.Join("", actual_clave) 
+            + "_" + string.Join("", metric_clave_filler[0]) 
+            + "_" + string.Join("", metric_clave_filler[1])
+            + "_" + string.Join("", metric_clave_filler[2]);
+        Debug.Log(result);*/
     }
 
     // Update is called once per frame
@@ -40,7 +45,25 @@ public class RythmGenerator : MonoBehaviour
         // return seed;
     }
 
-    private List<string> ClaveGenerator(string time_signature,string sub_division)
+    public static string Calculations(string time_signature, string sub_division)
+    {
+        //DebugMethod();
+        List<string> actual_clave = ClaveGenerator(time_signature, sub_division);
+        Debug.Log("actual_clave: " + string.Join(",", actual_clave));
+        List<List<int>> metric_clave_filler = FillerGenerator(time_signature,actual_clave, sub_division);
+        Debug.Log("metric_pattern: " + string.Join(",", metric_clave_filler[0]));
+        Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
+        Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
+
+        string result = string.Join("", actual_clave) 
+            + "_" + string.Join("", metric_clave_filler[0]) 
+            + "_" + string.Join("", metric_clave_filler[1])
+            + "_" + string.Join("", metric_clave_filler[2]);
+
+        return result;
+    }
+
+    private static List<string> ClaveGenerator(string time_signature,string sub_division)
     {
         List<string> all_possible_claves = new List<string>();
 
@@ -92,12 +115,21 @@ public class RythmGenerator : MonoBehaviour
         return chosen_clave_list;
     }
 
-    private List<List<int>> FillerGenerator(List<string> clave, string sub_division)
+    private static List<List<int>> FillerGenerator(string time_signature, List<string> clave, string sub_division)
     {
         List<int> clave_pattern = new List<int>();
         List<int> fill_pattern = new List<int>();
         List<int> clave_pattern_o = new List<int>();
+        List<int> metric_pattern;
 
+        if (time_signature == "4/4")
+        {
+            metric_pattern = new List<int>() { 1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0 };
+        }
+        else //(time_signature = "3/4")
+        {
+            metric_pattern = new List<int>() { 1,0,0,0,1,0,0,0,1,0,0,0 };
+        }
         // Si la subdivision es en corcheas entonces podemos subdividir mas.
         if (sub_division == "1/8")
         {
@@ -155,27 +187,11 @@ public class RythmGenerator : MonoBehaviour
         // Convertimos los beats a silencios y bicerversa para obtener mas resultados
         if (remove_beats_randomly)
         {
-            // Contar numero de 1s en el arreglo
-            /*int beats_count = clave_pattern.Where(x => x.Equals("1")).Count();
-            Debug.Log("Beats Count: " + beats_count);
-            int ones_to_remove = Random.Range(1, beats_count - 1);
-            int start_removing = Random.Range(1, clave_pattern.Count);
-            for (int i = start_removing; i < clave_pattern.Count; i++)
-            {
-                if (clave_pattern[i] == "1")
-                {
-                    fill_pattern.Add(0);
-                }
-            }*/
-
-            
-
+            // hace shuffle de la lista
             //fill_pattern = clave_pattern.OrderBy(i => System.Guid.NewGuid()).ToList();
             clave_pattern = ShuffleList(clave_pattern);
-
         }
         
-        // hace shuffle de la lista
         //clave_pattern = clave_pattern.OrderBy(i => System.Guid.NewGuid()).ToList();
         for (int i = 0; i < clave_pattern.Count; i++)
         {
@@ -190,12 +206,13 @@ public class RythmGenerator : MonoBehaviour
         }
 
         List<List<int>> result = new List<List<int>>();
+        result.Add(metric_pattern);
         result.Add(clave_pattern_o);
         result.Add(fill_pattern);
         return result;
     }
 
-    public List<int> ShuffleList(List<int> ts)
+    private static List<int> ShuffleList(List<int> ts)
     {
         var count = ts.Count;
         var last = count - 1;
