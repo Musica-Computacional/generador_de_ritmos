@@ -45,6 +45,13 @@ public class Bateria : MonoBehaviour
         List<AudioClip> clave_ = new List<AudioClip>();
         List<AudioClip> filler_ = new List<AudioClip>();
 
+        foreach (int beat in metric)
+        {
+            if (beat == 1)
+            {
+
+            }
+        }
 
         List<List<AudioClip>> result = new List<List<AudioClip>>();
         result.Add(metric_);
