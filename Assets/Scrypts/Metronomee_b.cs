@@ -1,22 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Metronomee : MonoBehaviour
+public class Metronomee_b : MonoBehaviour
 {
     public double bpm = 140.0F;
 
-    public double nextTick = 0.0F; // The next tick in dspTime
-    double sampleRate = 0.0F; 
-    bool ticked = false; 
-    public AudioSource audioSource; 
+    double nextTick = 0.0F; // The next tick in dspTime
+    double sampleRate = 0.0F;
+    bool ticked = false;
+    public AudioSource audioSource;
     public AudioClip tick;
 
     public string time_signature = "4/4";
     int counter = 0;
-
-    public event Action<double> Ticked;
 
     void Start()
     {
@@ -26,11 +23,20 @@ public class Metronomee : MonoBehaviour
         nextTick = startTick + (60.0F / bpm);
     }
 
+    void LateUpdate()
+    {
+        if (!ticked && nextTick >= AudioSettings.dspTime)
+        {
+            ticked = true;
+            BroadcastMessage("OnTick");
+        }
+    }
+
     // Just an example OnTick here
     void OnTick()
     {
         Debug.Log("Tick");
-
+        // GetComponent<AudioSource>().Play();
         counter += 1;
         if (counter == 1)
         {
@@ -43,7 +49,7 @@ public class Metronomee : MonoBehaviour
 
         if (time_signature == "4/4")
         {
-            if(counter == 4)
+            if (counter == 4)
             {
                 counter = 0;
             }
@@ -55,11 +61,7 @@ public class Metronomee : MonoBehaviour
                 counter = 0;
             }
         }
-    }
 
-    public double GetNextTickTime()
-    {
-        return nextTick;
     }
 
     void FixedUpdate()
@@ -69,19 +71,9 @@ public class Metronomee : MonoBehaviour
 
         while (dspTime >= nextTick)
         {
-
             ticked = false;
             nextTick += timePerTick;
         }
 
-    }
-    void LateUpdate()
-    {
-        if (!ticked && nextTick >= AudioSettings.dspTime)
-        {
-            ticked = true;
-            BroadcastMessage("OnTick");
-            //BroadcastMessage("GetNextTickTime");
-        }
     }
 }

@@ -32,8 +32,8 @@ public class SeedGenerator : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("yeah: 673381950");
-        Debug.Log(seed);
+        //Debug.Log("yeah: 673381950");
+        //Debug.Log(seed);
     }
 
 }

@@ -16,7 +16,7 @@ public class Bateria : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //getRythm();
+        getRythm("4/4","1/8");
 
     }
 
@@ -45,13 +45,13 @@ public class Bateria : MonoBehaviour
         List<AudioClip> clave_ = new List<AudioClip>();
         List<AudioClip> filler_ = new List<AudioClip>();
 
-        foreach (int beat in metric)
+        /*foreach (int beat in metric)
         {
             if (beat == 1)
             {
 
             }
-        }
+        }*/
 
         List<List<AudioClip>> result = new List<List<AudioClip>>();
         result.Add(metric_);

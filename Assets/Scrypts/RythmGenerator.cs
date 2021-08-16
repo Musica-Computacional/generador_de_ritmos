@@ -49,11 +49,11 @@ public class RythmGenerator : MonoBehaviour
     {
         //DebugMethod();
         List<string> actual_clave = ClaveGenerator(time_signature, sub_division);
-        Debug.Log("actual_clave: " + string.Join(",", actual_clave));
+        //Debug.Log("actual_clave: " + string.Join(",", actual_clave));
         List<List<int>> metric_clave_filler = FillerGenerator(time_signature,actual_clave, sub_division);
-        Debug.Log("metric_pattern: " + string.Join(",", metric_clave_filler[0]));
-        Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
-        Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
+        //Debug.Log("metric_pattern: " + string.Join(",", metric_clave_filler[0]));
+        //Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
+        //Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
 
         List<List<int>> result = new List<List<int>>();
         result.Add(metric_clave_filler[0]);
@@ -103,8 +103,8 @@ public class RythmGenerator : MonoBehaviour
                 all_possible_claves.Add("22222222");
             }
         }
-        Debug.Log("time_signature: " + time_signature + " sub_division: " + sub_division);
-        Debug.Log("all_possible_claves: " + string.Join(",", all_possible_claves));
+        //Debug.Log("time_signature: " + time_signature + " sub_division: " + sub_division);
+        //Debug.Log("all_possible_claves: " + string.Join(",", all_possible_claves));
 
         string chosen_clave = all_possible_claves[Random.Range(0, all_possible_claves.Count())];
         List<string> chosen_clave_list = new List<string>();
@@ -155,7 +155,7 @@ public class RythmGenerator : MonoBehaviour
                     clave_pattern.Add(0);
                 }
             }
-            Debug.Log("clave_pattern +div: " + string.Join(",", clave_pattern));
+            //Debug.Log("clave_pattern +div: " + string.Join(",", clave_pattern));
 
         }
         else //(sub_division == "1/16")
@@ -174,7 +174,7 @@ public class RythmGenerator : MonoBehaviour
                     clave_pattern.Add(0);
                 }
             }
-            Debug.Log("clave_pattern: " + string.Join(",", clave_pattern));
+            //Debug.Log("clave_pattern: " + string.Join(",", clave_pattern));
 
         }
 

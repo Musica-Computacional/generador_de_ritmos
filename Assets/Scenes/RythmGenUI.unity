@@ -1045,6 +1045,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639155416}
   m_CullTransparentMesh: 1
+--- !u!1 &709648422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 709648424}
+  - component: {fileID: 709648423}
+  m_Layer: 0
+  m_Name: Metronome
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &709648423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709648422}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba1931d54bdbb64e802c39eaf8a9f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 100
+  nextTick: 0
+  audioSource: {fileID: 1504608341}
+  tick: {fileID: 8300000, guid: b0b7076f53033714396ea3dd205a5457, type: 3}
+  time_signature: 4/4
+--- !u!4 &709648424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709648422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 420.47916, y: 201.46022, z: -79.49617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &718602443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,8 +2577,8 @@ GameObject:
   - component: {fileID: 1504608337}
   - component: {fileID: 1504608336}
   - component: {fileID: 1504608340}
-  - component: {fileID: 1504608339}
   - component: {fileID: 1504608341}
+  - component: {fileID: 1504608339}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2592,13 +2640,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1504608335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba1931d54bdbb64e802c39eaf8a9f0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c4f1ac2c2c77f44ab5e16c98b717847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 100
+  time_signature: 4/4
+  sub_division: 1/8
+  bpm: 120
   audioSource: {fileID: 1504608341}
   tick: {fileID: 8300000, guid: b0b7076f53033714396ea3dd205a5457, type: 3}
-  time_signature: 4/4
+  metric: {fileID: 8300000, guid: b0b7076f53033714396ea3dd205a5457, type: 3}
+  clave: {fileID: 8300000, guid: a6bcc32e5fe01c14ab29076848810c8e, type: 3}
+  filler: {fileID: 8300000, guid: e42c568251dd9924a824f37c2b4b0c16, type: 3}
+  playMetronome: 1
+  counterControl: 0
+  counter: 0
 --- !u!114 &1504608340
 MonoBehaviour:
   m_ObjectHideFlags: 0
