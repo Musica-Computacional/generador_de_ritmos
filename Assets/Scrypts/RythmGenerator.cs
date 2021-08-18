@@ -10,13 +10,22 @@ public class RythmGenerator : MonoBehaviour
     //public string time_signature; // { "3/4", "4/4" };
     //public string sub_division; // { "1/8", "1/16" };
     //public double tempo = 60.0;
-    public static bool remove_beats_randomly = false;
+    public  bool remove_beats_random = false;
+    public static bool remove_beats_randomly;
     public GameObject text_ran_gen_num;
     public int num;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (remove_beats_random)
+        {
+            remove_beats_randomly = true;
+        }
+        else
+        {
+            remove_beats_randomly = false;
+        }
         //DebugMethod();
         /*List<string> actual_clave = ClaveGenerator(time_signature,sub_division);
         Debug.Log("actual_clave: " + string.Join(",", actual_clave));
@@ -50,7 +59,7 @@ public class RythmGenerator : MonoBehaviour
         //DebugMethod();
         List<string> actual_clave = ClaveGenerator(time_signature, sub_division);
         //Debug.Log("actual_clave: " + string.Join(",", actual_clave));
-        List<List<int>> metric_clave_filler = FillerGenerator(time_signature,actual_clave, sub_division);
+        List<List<int>> metric_clave_filler = FillerGenerator(time_signature,actual_clave, sub_division,remove_beats_randomly);
         //Debug.Log("metric_pattern: " + string.Join(",", metric_clave_filler[0]));
         //Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
         //Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
@@ -115,7 +124,7 @@ public class RythmGenerator : MonoBehaviour
         return chosen_clave_list;
     }
 
-    private static List<List<int>> FillerGenerator(string time_signature, List<string> clave, string sub_division)
+    private static List<List<int>> FillerGenerator(string time_signature, List<string> clave, string sub_division,bool remove_beats_randomly)
     {
         List<int> clave_pattern = new List<int>();
         List<int> fill_pattern = new List<int>();
