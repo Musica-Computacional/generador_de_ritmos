@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Dropdown subDivDropdown;
     public Dropdown styleDropdown;
     public Toggle randomFillerToggle;
+    public Text metricText;
     public Text claveText;
     public Text fillerText;
     //UI things -----------------------------
@@ -38,7 +39,9 @@ public class Player : MonoBehaviour
 
     List<int> metric_pattern = new List<int>();
     List<int> clave_pattern = new List<int>();
+    List<int> clave_pattern_int = new List<int>();
     List<int> filler_pattern = new List<int>();
+
     bool random_filler;
 
     //Metronome -----------------------------
@@ -61,7 +64,7 @@ public class Player : MonoBehaviour
         string styleName = styleDropdown.options[styleDropdown.value].text;
         if (styleName == "lofi"){style = 0;}
         else if (styleName == "pop"){style = 1;} 
-        else if (styleName == "rock"){style = 2;}
+        else if (styleName == "techno"){style = 2;}
 
         random_filler = randomFillerToggle.isOn;
 
@@ -80,12 +83,17 @@ public class Player : MonoBehaviour
         rythm = RythmGenerator.Calculations(time_signature, sub_division, random_filler);
         metric_pattern = rythm[0];
         clave_pattern = rythm[1];
+        clave_pattern_int = rythm[3];
         filler_pattern = rythm[2];
 
+        metricText.GetComponent<Text>().text = "" + string.Join(",", metric_pattern);
+        //claveIntText.GetComponent<Text>().text = "" + string.Join(",", clave_pattern_int);
         claveText.GetComponent<Text>().text = "" + string.Join(",", clave_pattern);
         fillerText.GetComponent<Text>().text = "" + string.Join(",", filler_pattern);
 
+
         Debug.Log("metric_pattern: " + string.Join(",", metric_pattern));
+        Debug.Log("clave_pattern_int:  " + string.Join(",", clave_pattern_int));
         Debug.Log("clave_pattern:  " + string.Join(",", clave_pattern));
         Debug.Log("fill_pattern:   " + string.Join(",", filler_pattern));
     }

@@ -55,10 +55,18 @@ public class RythmGenerator : MonoBehaviour
         //Debug.Log("clave_pattern_o: " + string.Join(",", metric_clave_filler[1]));
         //Debug.Log("fill_pattern: " + string.Join(",", metric_clave_filler[2]));
 
+        List<int> actual_clave_int = new List<int>();
+
+        for (var i = 0; i < actual_clave.Count; i++)
+        {
+            actual_clave_int.Add(int.Parse(actual_clave[i]));
+        }
+
         List<List<int>> result = new List<List<int>>();
         result.Add(metric_clave_filler[0]);
         result.Add(metric_clave_filler[1]);
         result.Add(metric_clave_filler[2]);
+        result.Add(actual_clave_int);
 
         return result;
     }
@@ -128,12 +136,13 @@ public class RythmGenerator : MonoBehaviour
         }
         else //(time_signature = "3/4")
         {
-            metric_pattern = new List<int>() { 1,0,0,0,1,0,0,0,1,0,0,0 };
+            metric_pattern = new List<int>() { 1,0,0,1,0,0,1,0,0,1,0,0 };
         }
+        
         // Si la subdivision es en corcheas entonces podemos subdividir mas.
         if (sub_division == "1/8")
         {
-
+  
             for (int i = 0; i < clave.Count; i++)
             {
                 if (clave[i] == "2")
@@ -155,8 +164,8 @@ public class RythmGenerator : MonoBehaviour
                     clave_pattern.Add(0);
                 }
             }
-            //Debug.Log("clave_pattern +div: " + string.Join(",", clave_pattern));
 
+            //Debug.Log("clave_pattern +div: " + string.Join(",", clave_pattern));
         }
         else //(sub_division == "1/16")
         {
@@ -175,7 +184,6 @@ public class RythmGenerator : MonoBehaviour
                 }
             }
             //Debug.Log("clave_pattern: " + string.Join(",", clave_pattern));
-
         }
 
         //hacemos copia de la clave ya que aca ya esta construida

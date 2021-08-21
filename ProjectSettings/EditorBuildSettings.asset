@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/RythmGenUI.unity
+    guid: bb9e4e96e875c81408b55c2ae37cd064
   m_configObjects: {}
