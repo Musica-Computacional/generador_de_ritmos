@@ -6,17 +6,19 @@ using UnityEngine;
 public class Bateria : MonoBehaviour
 {
 
-    public List<AudioClip> clave_beats;  // kick
-    public List<AudioClip> filler_beats; // menos presente, sin saturacion //hithat cerrado
-    public List<AudioClip> metric_beats; // snare,hithat
-
+    public AudioSource audioSource;
+    public List<AudioClip> tick;
+    public List<AudioClip> metric;
+    public List<AudioClip> clave;
+    public List<AudioClip> filler;
+    public int style = 0;
 
     private static List<string> rythm = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        getRythm("4/4","1/8");
+        getRythm("4/4","1/8",false);
 
     }
 
@@ -26,9 +28,9 @@ public class Bateria : MonoBehaviour
         
     }
 
-    public static void getRythm(string time_signature, string sub_division)
+    public static void getRythm(string time_signature, string sub_division,bool random_filler)
     {
-        List<List<int>> rythm = RythmGenerator.Calculations(time_signature,sub_division);
+        List<List<int>> rythm = RythmGenerator.Calculations(time_signature,sub_division,random_filler);
         // metric,clave,clave_pattern,filler_pathern
         
         AssignSamples(rythm);

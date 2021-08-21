@@ -11,26 +11,6 @@ public class SeedGenerator : MonoBehaviour
     public int seed = 1234;
     public InputField TextInput;
 
-
-    /*void Awake()
-    {
-        string_seed = TextInput.GetComponent<Text>().text;
-        if (use_string_seed)
-        {
-            seed = string_seed.GetHashCode();
-        }
-
-        if (random_seed)
-        {
-            seed = Random.Range(1, 99999);
-        }
-
-        //TextInput.GetComponent<Text>().text = "" + string_seed;
-
-        Random.InitState(seed);
-        // return seed;
-    }*/
-
     void Start()
     {
         //Debug.Log("yeah: 673381950");
@@ -40,7 +20,7 @@ public class SeedGenerator : MonoBehaviour
 
     public void SetSeed()
     {
-        string_seed = TextInput.text;
+        string_seed = TextInput.text.ToString();
         if (use_string_seed)
         {
             seed = string_seed.GetHashCode();

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RythmGenerator : MonoBehaviour
 {
@@ -11,21 +10,21 @@ public class RythmGenerator : MonoBehaviour
     //public string sub_division; // { "1/8", "1/16" };
     //public double tempo = 60.0;
     public  bool remove_beats_random = false;
-    public static bool remove_beats_randomly;
-    public GameObject text_ran_gen_num;
+    //public static bool remove_beats_randomly;
     public int num;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (remove_beats_random)
+        /*if (remove_beats_random)
         {
             remove_beats_randomly = true;
         }
         else
         {
             remove_beats_randomly = false;
-        }
+        }*/
+
         //DebugMethod();
         /*List<string> actual_clave = ClaveGenerator(time_signature,sub_division);
         Debug.Log("actual_clave: " + string.Join(",", actual_clave));
@@ -46,15 +45,7 @@ public class RythmGenerator : MonoBehaviour
         
     }
 
-    public void UpdateText()
-    {
-        num = Random.Range(1, 99999);
-        text_ran_gen_num.GetComponent<Text>().text = "" + num;
-
-        // return seed;
-    }
-
-    public static List<List<int>> Calculations(string time_signature, string sub_division)
+    public static List<List<int>> Calculations(string time_signature, string sub_division,bool remove_beats_randomly)
     {
         //DebugMethod();
         List<string> actual_clave = ClaveGenerator(time_signature, sub_division);
