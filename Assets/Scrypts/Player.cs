@@ -173,20 +173,20 @@ public class Player : MonoBehaviour
                 else if (EvalFillerPattern() == true && EvalClavePattern() == false && EvalMetricPattern() == false)
                 {
                     //Debug.Log("filler");
-                    audioSource.PlayOneShot(filler[style], 0.5f);
+                    audioSource.PlayOneShot(filler[style], 0.3f);
                 }
                 //101
                 else if (EvalFillerPattern() == true && EvalClavePattern() == false && EvalMetricPattern() == true)
                 {
                     //Debug.Log("filler");
                     audioSource.PlayOneShot(metric[style], 0.5f);
-                    audioSource.PlayOneShot(filler[style], 0.5f);
+                    audioSource.PlayOneShot(filler[style], 0.3f);
                 }
                 //110
                 else if (EvalFillerPattern() == true && EvalClavePattern() == true && EvalMetricPattern() == false)
                 {
                     //Debug.Log("filler");
-                    audioSource.PlayOneShot(filler[style], 0.5f);
+                    audioSource.PlayOneShot(filler[style], 0.3f);
                     audioSource.PlayOneShot(clave[style], 0.5f);
                 }
                 //111
@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
                     //Debug.Log("clave");
                     audioSource.PlayOneShot(metric[style], 0.5f);
                     audioSource.PlayOneShot(clave[style], 0.5f);
-                    audioSource.PlayOneShot(filler[style], 0.5f);
+                    audioSource.PlayOneShot(filler[style], 0.3f);
                 }
 
 
